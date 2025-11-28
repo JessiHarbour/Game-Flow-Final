@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: c3eed9e835d82254a9f8db9414c0d288
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8778590465860598902
+    second: DarkPhobia_Sprite_Asset_big_size_0
+  - first:
+      213: 8294819688817489738
+    second: DarkPhobia_Sprite_Asset_big_size_1
+  - first:
+      213: -5489324468573437471
+    second: DarkPhobia_Sprite_Asset_big_size_2
+  - first:
+      213: -4208777237121467388
+    second: DarkPhobia_Sprite_Asset_big_size_3
+  - first:
+      213: 2948418065407012569
+    second: DarkPhobia_Sprite_Asset_big_size_4
+  - first:
+      213: 1965484388383131979
+    second: DarkPhobia_Sprite_Asset_big_size_5
+  - first:
+      213: 4253202733025014466
+    second: DarkPhobia_Sprite_Asset_big_size_6
+  - first:
+      213: 8491432083621212729
+    second: DarkPhobia_Sprite_Asset_big_size_7
+  - first:
+      213: 5138503095668627389
+    second: DarkPhobia_Sprite_Asset_big_size_8
+  - first:
+      213: 6386136598662340524
+    second: DarkPhobia_Sprite_Asset_big_size_9
+  - first:
+      213: -1796573114514144963
+    second: DarkPhobia_Sprite_Asset_big_size_10
+  - first:
+      213: 1560851754950254371
+    second: DarkPhobia_Sprite_Asset_big_size_11
+  - first:
+      213: 3815373895269518347
+    second: DarkPhobia_Sprite_Asset_big_size_12
+  - first:
+      213: -2844236103931158755
+    second: DarkPhobia_Sprite_Asset_big_size_13
+  - first:
+      213: 280239794426496038
+    second: DarkPhobia_Sprite_Asset_big_size_14
+  - first:
+      213: -5911106689237820139
+    second: DarkPhobia_Sprite_Asset_big_size_15
+  - first:
+      213: 2638771029851372164
+    second: DarkPhobia_Sprite_Asset_big_size_16
+  - first:
+      213: -6037550006979365054
+    second: DarkPhobia_Sprite_Asset_big_size_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_0
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 2128
+        width: 94
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67c704a8481d3d970800000000000000
+      internalID: 8778590465860598902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_1
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 2118
+        width: 114
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a47f1e32f8e1d1370800000000000000
+      internalID: 8294819688817489738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_2
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 2068
+        width: 144
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e102d1ca7002d3b0800000000000000
+      internalID: -5489324468573437471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_3
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 2058
+        width: 164
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40cff92e66b6795c0800000000000000
+      internalID: -4208777237121467388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_4
+      rect:
+        serializedVersion: 2
+        x: 1358
+        y: 1928
+        width: 454
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9deededeb92eae820800000000000000
+      internalID: 2948418065407012569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_5
+      rect:
+        serializedVersion: 2
+        x: 1948
+        y: 1918
+        width: 474
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b49072d33adc64b10800000000000000
+      internalID: 1965484388383131979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_6
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1948
+        width: 94
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c23dabe959660b30800000000000000
+      internalID: 4253202733025014466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_7
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 1938
+        width: 114
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 932f8929d70a7d570800000000000000
+      internalID: 8491432083621212729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_8
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 1898
+        width: 144
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db7d29e2751af4740800000000000000
+      internalID: 5138503095668627389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_9
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 1888
+        width: 164
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cafd36ab66d10a850800000000000000
+      internalID: 6386136598662340524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_10
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 1718
+        width: 134
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d310e50654a4117e0800000000000000
+      internalID: -1796573114514144963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_11
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 1708
+        width: 154
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32fdad0c66249a510800000000000000
+      internalID: 1560851754950254371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_12
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 1538
+        width: 134
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0c86d0d75ee2f430800000000000000
+      internalID: 3815373895269518347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_13
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 1528
+        width: 154
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1f97d7355e3788d0800000000000000
+      internalID: -2844236103931158755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_14
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 1138
+        width: 494
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62448b6bb9c93e300800000000000000
+      internalID: 280239794426496038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_15
+      rect:
+        serializedVersion: 2
+        x: 1948
+        y: 1128
+        width: 514
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51d5b86d8c787fda0800000000000000
+      internalID: -5911106689237820139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_16
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 578
+        width: 294
+        height: 874
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48af1e5554cce9420800000000000000
+      internalID: 2638771029851372164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DarkPhobia_Sprite_Asset_big_size_17
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 568
+        width: 314
+        height: 894
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2477658c140563ca0800000000000000
+      internalID: -6037550006979365054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a5e73bcd95369454cbbaa52a720eeaad
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DarkPhobia_Sprite_Asset_big_size_0: 8778590465860598902
+      DarkPhobia_Sprite_Asset_big_size_1: 8294819688817489738
+      DarkPhobia_Sprite_Asset_big_size_10: -1796573114514144963
+      DarkPhobia_Sprite_Asset_big_size_11: 1560851754950254371
+      DarkPhobia_Sprite_Asset_big_size_12: 3815373895269518347
+      DarkPhobia_Sprite_Asset_big_size_13: -2844236103931158755
+      DarkPhobia_Sprite_Asset_big_size_14: 280239794426496038
+      DarkPhobia_Sprite_Asset_big_size_15: -5911106689237820139
+      DarkPhobia_Sprite_Asset_big_size_16: 2638771029851372164
+      DarkPhobia_Sprite_Asset_big_size_17: -6037550006979365054
+      DarkPhobia_Sprite_Asset_big_size_2: -5489324468573437471
+      DarkPhobia_Sprite_Asset_big_size_3: -4208777237121467388
+      DarkPhobia_Sprite_Asset_big_size_4: 2948418065407012569
+      DarkPhobia_Sprite_Asset_big_size_5: 1965484388383131979
+      DarkPhobia_Sprite_Asset_big_size_6: 4253202733025014466
+      DarkPhobia_Sprite_Asset_big_size_7: 8491432083621212729
+      DarkPhobia_Sprite_Asset_big_size_8: 5138503095668627389
+      DarkPhobia_Sprite_Asset_big_size_9: 6386136598662340524
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
