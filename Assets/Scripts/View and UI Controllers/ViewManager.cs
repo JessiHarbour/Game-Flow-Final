@@ -32,6 +32,9 @@ namespace View_and_UI_Controllers
             belowDeckView.SetActive(false);
             checkWindowView.SetActive(false);
             checkTableView.SetActive(false);
+
+            // MONSTER looking over the side of the boat
+            MonsterManager.Instance.EnterView(ThreatType.Overboard);
         }
 
         public void ShowBelowDeck()
@@ -50,6 +53,9 @@ namespace View_and_UI_Controllers
             belowDeckView.SetActive(false);
             checkWindowView.SetActive(true);
             checkTableView.SetActive(false);
+
+            // MONSTER looking out the window
+            MonsterManager.Instance.EnterView(ThreatType.Window);
         }
 
         public void ShowCheckTableView()
@@ -59,6 +65,9 @@ namespace View_and_UI_Controllers
             belowDeckView.SetActive(false);
             checkWindowView.SetActive(false);
             checkTableView.SetActive(true);
+
+            // MONSTER looking under the table
+            MonsterManager.Instance.EnterView(ThreatType.Table);
         }
     }
 }
