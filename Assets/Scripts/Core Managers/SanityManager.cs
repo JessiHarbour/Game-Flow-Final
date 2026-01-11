@@ -4,7 +4,6 @@ namespace Core_Managers
 
     public class SanityManager : MonoBehaviour
     {
-        // Singleton
         public static SanityManager Instance;
 
         [Header("Sanity Settings")]
@@ -52,9 +51,7 @@ namespace Core_Managers
             currentSanity = Mathf.Clamp(currentSanity, 0f, 100f);
         }
 
-        //--------------------------------------------
-        // FLOAT-BASED SANITY FUNCTIONS
-        //--------------------------------------------
+        
 
         public void ReduceSanity(float amount)
         {
@@ -75,9 +72,8 @@ namespace Core_Managers
             return currentSanity <= 0f;
         }
 
-        //--------------------------------------------
+     
         // LANTERN CONTROL
-        //--------------------------------------------
 
         public void StartLanternOutDrain()
         {

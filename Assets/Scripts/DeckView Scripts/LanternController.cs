@@ -147,7 +147,7 @@ namespace Core_Managers
         // FLASH? not sure if will be sepearte light
         private void FlashLantern()
         {
-            // reserved for monster system
+            
         }
         
         // randomize (schedual next flicker)

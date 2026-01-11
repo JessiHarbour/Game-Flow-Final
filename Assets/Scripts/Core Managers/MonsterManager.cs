@@ -18,25 +18,21 @@ public class MonsterManager : MonoBehaviour
         [Range(0f, 1f)] public float warningChanceOnEnter = 0.35f;
 
         [Header("Time")]
-        //Time before Stage1 = Stage2
         public float timeToStage2 = 1.5f;
-
-        //Time player has to Flash during Stage2 before it Primed
         public float timeToPrime = 2.0f;
 
         [Header("STAGES")]
-        public GameObject stage1Object; // Window Close 1 / Overboard Bubbles / Table Thump 1
-        public GameObject stage2Object; // Window Close 2 / Overboard MonsterOut / Table Thump 2
-        public GameObject attackObject; // Window Attack / Overboard Attack / Table Attack 
+        public GameObject stage1Object;
+        public GameObject stage2Object;
+        public GameObject attackObject;
     }
 
     [Header("Threat configs")]
     public List<Threat> threats = new();
 
-    [Header("Game Over UI ")] //need to work on this
+    [Header("Game Over UI")]
     public GameObject gameOverView;
 
-    // View the player is currently in // so flash knows what monster to kill
     public ThreatType currentView = ThreatType.Overboard;
 
     private readonly Dictionary<ThreatType, ThreatState> states = new();
@@ -70,26 +66,22 @@ public class MonsterManager : MonoBehaviour
     {
         if (running.TryGetValue(type, out var co) && co != null)
             StopCoroutine(co);
+
         running[type] = null;
     }
 
-    // Call this when view is opened
+
+    // VIEW ENTER 
+   
     public void EnterView(ThreatType type)
     {
         currentView = type;
 
         var t = Get(type);
         if (t == null)
-        {
-            Debug.LogWarning($"MonsterManager: Missing config for {type}.");
             return;
-        }
 
-      // makes ure no monsters double spwan
-        ClearAll(t);
-        StopRoutine(type);
-
-        // If monster is Primed, entering again = attack/game over
+        // If already primed = danger
         if (states[type] == ThreatState.Primed)
         {
             SetActive(t.attackObject, true);
@@ -97,23 +89,22 @@ public class MonsterManager : MonoBehaviour
             return;
         }
 
-        // Otherwise, start warnings
-        if (states[type] == ThreatState.Idle && Random.value < t.warningChanceOnEnter)
+        // If monster is progressing = NOTHING
+        if (states[type] != ThreatState.Idle)
+            return;
+
+        // Start warning only if idle
+        if (Random.value < t.warningChanceOnEnter)
         {
             states[type] = ThreatState.Warning1;
             SetActive(t.stage1Object, true);
             running[type] = StartCoroutine(WarningFlow(type, t));
         }
-        else
-        {
-            // nothing happens
-            states[type] = ThreatState.Idle;
-        }
     }
-
+    
+    // PROGRESSION FLOW NEVER INTERRUPTED BY VIEW
     IEnumerator WarningFlow(ThreatType type, Threat t)
     {
-        // Stage1 -> wait -> Stage2
         yield return new WaitForSeconds(t.timeToStage2);
 
         if (states[type] != ThreatState.Warning1)
@@ -125,20 +116,21 @@ public class MonsterManager : MonoBehaviour
         states[type] = ThreatState.Warning2;
         SetActive(t.stage1Object, false);
         SetActive(t.stage2Object, true);
-
-        // Stage2 -> wait -> Primed (if player didn't Flash)
+        
         yield return new WaitForSeconds(t.timeToPrime);
 
         if (states[type] == ThreatState.Warning2)
         {
             states[type] = ThreatState.Primed;
             SetActive(t.stage2Object, false);
+            SetActive(t.attackObject, true);
         }
 
         running[type] = null;
     }
 
-    // Always-on Flash button calls this (no parameters)
+   
+    // FLASH 
     public void Flash()
     {
         var type = currentView;
@@ -150,8 +142,8 @@ public class MonsterManager : MonoBehaviour
         if (t == null)
             return;
 
-        // Flash only matters if something is happening / primed
         var s = states[type];
+
         if (s == ThreatState.Warning1 || s == ThreatState.Warning2 || s == ThreatState.Primed)
         {
             StopRoutine(type);
@@ -161,10 +153,11 @@ public class MonsterManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Flash did nothing (no threat right now).");
+            Debug.Log("Flash did nothing (no threat).");
         }
     }
-
+    
+    // GAME OVER
     public void GameOver(string reason)
     {
         Debug.Log("GAME OVER: " + reason);
