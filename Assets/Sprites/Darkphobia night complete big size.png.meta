@@ -1,0 +1,216 @@
+fileFormatVersion: 2
+guid: b60d9aac0742f58428f54178070b7a05
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6433799206479306844
+    second: Darkphobia night complete big size_0
+  - first:
+      213: 1795469627742450101
+    second: Darkphobia night complete big size_1
+  - first:
+      213: 8282909087757140085
+    second: Darkphobia night complete big size_2
+  - first:
+      213: 7290382149845938632
+    second: Darkphobia night complete big size_3
+  - first:
+      213: -1046936395919501281
+    second: Darkphobia night complete big size_4
+  - first:
+      213: 6086021044411382027
+    second: Darkphobia night complete big size_5
+  - first:
+      213: 3435045677090795887
+    second: Darkphobia night complete big size_6
+  - first:
+      213: 831180761602556201
+    second: Darkphobia night complete big size_7
+  - first:
+      213: -5691063950198086151
+    second: Darkphobia night complete big size_8
+  - first:
+      213: -718108657392911842
+    second: Darkphobia night complete big size_9
+  - first:
+      213: 756196459256826507
+    second: Darkphobia night complete big size_10
+  - first:
+      213: -6487545168924799734
+    second: Darkphobia night complete big size_11
+  - first:
+      213: -3325496306901824658
+    second: Darkphobia night complete big size_12
+  - first:
+      213: 6964461197079460363
+    second: Darkphobia night complete big size_13
+  - first:
+      213: -698377902139172778
+    second: Darkphobia night complete big size_14
+  - first:
+      213: 1649292268838510382
+    second: Darkphobia night complete big size_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Darkphobia night complete big size_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 0
+        width: 1167
+        height: 301
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c50a3626a42794950800000000000000
+      internalID: 6433799206479306844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 651d9d00a400c324f8b3f97b62d47d21
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Darkphobia night complete big size_0: 6433799206479306844
+      Darkphobia night complete big size_1: 1795469627742450101
+      Darkphobia night complete big size_10: 756196459256826507
+      Darkphobia night complete big size_11: -6487545168924799734
+      Darkphobia night complete big size_12: -3325496306901824658
+      Darkphobia night complete big size_13: 6964461197079460363
+      Darkphobia night complete big size_14: -698377902139172778
+      Darkphobia night complete big size_15: 1649292268838510382
+      Darkphobia night complete big size_2: 8282909087757140085
+      Darkphobia night complete big size_3: 7290382149845938632
+      Darkphobia night complete big size_4: -1046936395919501281
+      Darkphobia night complete big size_5: 6086021044411382027
+      Darkphobia night complete big size_6: 3435045677090795887
+      Darkphobia night complete big size_7: 831180761602556201
+      Darkphobia night complete big size_8: -5691063950198086151
+      Darkphobia night complete big size_9: -718108657392911842
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
