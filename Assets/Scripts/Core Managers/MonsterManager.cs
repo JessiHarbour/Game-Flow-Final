@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Core_Managers;
 
 public enum ThreatType { Overboard, Window, Table }
 public enum ThreatState { Idle, Warning1, Warning2, Primed }
@@ -14,12 +15,13 @@ public class MonsterManager : MonoBehaviour
     {
         public ThreatType type;
 
-        [Header("Chance (when entering view)")]
-        [Range(0f, 1f)] public float warningChanceOnEnter = 0.35f;
-
         [Header("Time")]
         public float timeToStage2 = 1.5f;
         public float timeToPrime = 2.0f;
+
+        [Header("Ambient Spawning")]
+        public float minSpawnDelay = 6f;
+        public float maxSpawnDelay = 12f;
 
         [Header("STAGES")]
         public GameObject stage1Object;
@@ -29,9 +31,6 @@ public class MonsterManager : MonoBehaviour
 
     [Header("Threat configs")]
     public List<Threat> threats = new();
-
-    [Header("Game Over UI")]
-    public GameObject gameOverView;
 
     public ThreatType currentView = ThreatType.Overboard;
 
@@ -44,7 +43,10 @@ public class MonsterManager : MonoBehaviour
         else { Destroy(gameObject); return; }
 
         foreach (var t in threats)
+        {
             states[t.type] = ThreatState.Idle;
+            StartCoroutine(AmbientThreatLoop(t));
+        }
     }
 
     Threat Get(ThreatType type) => threats.Find(t => t.type == type);
@@ -56,7 +58,6 @@ public class MonsterManager : MonoBehaviour
 
     void ClearAll(Threat t)
     {
-        if (t == null) return;
         SetActive(t.stage1Object, false);
         SetActive(t.stage2Object, false);
         SetActive(t.attackObject, false);
@@ -70,63 +71,72 @@ public class MonsterManager : MonoBehaviour
         running[type] = null;
     }
 
-
-    // VIEW ENTER 
-   
+    
     public void EnterView(ThreatType type)
     {
         currentView = type;
 
         var t = Get(type);
-        if (t == null)
-            return;
+        if (t == null) return;
 
-        // If already primed = danger
         if (states[type] == ThreatState.Primed)
         {
             SetActive(t.attackObject, true);
-            GameOver($"Monster attacked at {type}");
-            return;
         }
+    }
 
-        // If monster is progressing = NOTHING
-        if (states[type] != ThreatState.Idle)
-            return;
-
-        // Start warning only if idle
-        if (Random.value < t.warningChanceOnEnter)
+    // AMBIENT SPAWNING
+   
+    IEnumerator AmbientThreatLoop(Threat t)
+    {
+        while (true)
         {
-            states[type] = ThreatState.Warning1;
+            float sanityMultiplier = 1f;
+
+            // Increase spawn rate when sanity < 50%
+            if (SanityManager.Instance != null &&
+                SanityManager.Instance.currentSanity < 50f)
+            {
+                sanityMultiplier = 0.65f; // faster spawns
+            }
+
+            float wait = Random.Range(t.minSpawnDelay, t.maxSpawnDelay) * sanityMultiplier;
+            yield return new WaitForSeconds(wait);
+
+            if (states[t.type] != ThreatState.Idle)
+                continue;
+
+            states[t.type] = ThreatState.Warning1;
             SetActive(t.stage1Object, true);
-            running[type] = StartCoroutine(WarningFlow(type, t));
+            running[t.type] = StartCoroutine(WarningFlow(t.type, t));
         }
     }
     
-    // PROGRESSION FLOW NEVER INTERRUPTED BY VIEW
     IEnumerator WarningFlow(ThreatType type, Threat t)
     {
         yield return new WaitForSeconds(t.timeToStage2);
 
-        if (states[type] != ThreatState.Warning1)
-        {
-            running[type] = null;
-            yield break;
-        }
+        if (states[type] != ThreatState.Warning1) yield break;
 
         states[type] = ThreatState.Warning2;
         SetActive(t.stage1Object, false);
         SetActive(t.stage2Object, true);
-        
+
         yield return new WaitForSeconds(t.timeToPrime);
 
-        if (states[type] == ThreatState.Warning2)
-        {
-            states[type] = ThreatState.Primed;
-            SetActive(t.stage2Object, false);
-            SetActive(t.attackObject, true);
-        }
+        if (states[type] != ThreatState.Warning2) yield break;
 
-        running[type] = null;
+        states[type] = ThreatState.Primed;
+        SetActive(t.stage2Object, false);
+        SetActive(t.attackObject, true);
+
+        // Kill timer
+        yield return new WaitForSeconds(2f);
+
+        if (states[type] == ThreatState.Primed)
+        {
+            TriggerGameOver(type);
+        }
     }
 
    
@@ -135,36 +145,26 @@ public class MonsterManager : MonoBehaviour
     {
         var type = currentView;
 
-        if (!states.ContainsKey(type))
-            return;
+        if (!states.ContainsKey(type)) return;
 
         var t = Get(type);
-        if (t == null)
-            return;
+        if (t == null) return;
 
-        var s = states[type];
-
-        if (s == ThreatState.Warning1 || s == ThreatState.Warning2 || s == ThreatState.Primed)
+        if (states[type] != ThreatState.Idle)
         {
             StopRoutine(type);
             states[type] = ThreatState.Idle;
             ClearAll(t);
             Debug.Log($"Flash SUCCESS at {type}");
         }
-        else
-        {
-            Debug.Log("Flash did nothing (no threat).");
-        }
     }
     
     // GAME OVER
-    public void GameOver(string reason)
+    void TriggerGameOver(ThreatType type)
     {
-        Debug.Log("GAME OVER: " + reason);
-
-        if (gameOverView != null)
-            gameOverView.SetActive(true);
-
+        Debug.Log("GAME OVER — Monster killed player at " + type);
         Time.timeScale = 0f;
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
     }
 }

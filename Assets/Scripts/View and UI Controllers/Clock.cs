@@ -42,7 +42,7 @@ public class Clock : MonoBehaviour
             ass.text = Hours.ToString("00") + ":" + Minutes.ToString("00") + " AM";
         }
         
-        if (Hours != 6)
+        if (Hours != 3)
         {
             Invoke("clock",delay);
         }

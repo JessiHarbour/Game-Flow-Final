@@ -1,7 +1,8 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
 namespace Core_Managers
 {
-    using UnityEngine;
-
     public class SanityManager : MonoBehaviour
     {
         public static SanityManager Instance;
@@ -15,12 +16,16 @@ namespace Core_Managers
         public float lowSanityThreshold3 = 25f;
 
         [Header("Lantern Drain")]
-        public bool lanternOut = false;               // sanity drains when true
-        public float lanternOutDrainRate = 5f;        // sanity per second
+        public bool lanternOut = false;
+        public float lanternOutDrainRate = 5f;
 
         [Header("Effects")]
         public bool whispersActive = false;
         public bool visualDistortionsActive = false;
+
+        [Header("Game Over")]
+        public string gameOverSceneName = "GameOver";
+        private bool gameOverTriggered = false;
 
         private void Awake()
         {
@@ -37,11 +42,14 @@ namespace Core_Managers
 
         private void Update()
         {
-            // Drain sanity ONLY when lantern is out
+            if (gameOverTriggered)
+                return;
+
+            // Drain sanity when lantern is out
             if (lanternOut)
                 ReduceSanity(lanternOutDrainRate * Time.deltaTime);
 
-            // Trigger effects
+           
             if (currentSanity < lowSanityThreshold1 && !whispersActive)
                 whispersActive = true;
 
@@ -49,9 +57,13 @@ namespace Core_Managers
                 visualDistortionsActive = true;
 
             currentSanity = Mathf.Clamp(currentSanity, 0f, 100f);
-        }
 
-        
+            // Game over 
+            if (currentSanity <= 0f)
+            {
+                TriggerGameOver();
+            }
+        }
 
         public void ReduceSanity(float amount)
         {
@@ -72,9 +84,7 @@ namespace Core_Managers
             return currentSanity <= 0f;
         }
 
-     
         // LANTERN CONTROL
-
         public void StartLanternOutDrain()
         {
             lanternOut = true;
@@ -83,6 +93,16 @@ namespace Core_Managers
         public void StopLanternOutDrain()
         {
             lanternOut = false;
+        }
+
+        // GAME OVER
+        private void TriggerGameOver()
+        {
+            if (gameOverTriggered)
+                return;
+
+            gameOverTriggered = true;
+            SceneManager.LoadScene(gameOverSceneName);
         }
     }
 }
