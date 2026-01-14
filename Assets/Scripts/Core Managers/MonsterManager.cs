@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Core_Managers;
+using UnityEngine.SceneManagement;
 
 public enum ThreatType { Overboard, Window, Table }
 public enum ThreatState { Idle, Warning1, Warning2, Primed }
@@ -32,6 +33,11 @@ public class MonsterManager : MonoBehaviour
     [Header("Threat configs")]
     public List<Threat> threats = new();
 
+    [Header("Audio")]
+    public AudioClip monsterDeathSound;   // flash kills monster
+    public AudioClip playerDeathSound;    // monster kills player
+    private AudioSource audioSource;
+
     public ThreatType currentView = ThreatType.Overboard;
 
     private readonly Dictionary<ThreatType, ThreatState> states = new();
@@ -41,6 +47,18 @@ public class MonsterManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else { Destroy(gameObject); return; }
+
+        // Audio setup
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("MonsterManager needs an AudioSource component!");
+        }
+        else
+        {
+            audioSource.playOnAwake = false;
+            audioSource.spatialBlend = 0f; // 2D audio
+        }
 
         foreach (var t in threats)
         {
@@ -71,7 +89,7 @@ public class MonsterManager : MonoBehaviour
         running[type] = null;
     }
 
-    
+    // PLAYER VIEW
     public void EnterView(ThreatType type)
     {
         currentView = type;
@@ -86,18 +104,16 @@ public class MonsterManager : MonoBehaviour
     }
 
     // AMBIENT SPAWNING
-   
     IEnumerator AmbientThreatLoop(Threat t)
     {
         while (true)
         {
             float sanityMultiplier = 1f;
 
-            // Increase spawn rate when sanity < 50%
             if (SanityManager.Instance != null &&
                 SanityManager.Instance.currentSanity < 50f)
             {
-                sanityMultiplier = 0.65f; // faster spawns
+                sanityMultiplier = 0.65f;
             }
 
             float wait = Random.Range(t.minSpawnDelay, t.maxSpawnDelay) * sanityMultiplier;
@@ -111,7 +127,7 @@ public class MonsterManager : MonoBehaviour
             running[t.type] = StartCoroutine(WarningFlow(t.type, t));
         }
     }
-    
+
     IEnumerator WarningFlow(ThreatType type, Threat t)
     {
         yield return new WaitForSeconds(t.timeToStage2);
@@ -130,8 +146,8 @@ public class MonsterManager : MonoBehaviour
         SetActive(t.stage2Object, false);
         SetActive(t.attackObject, true);
 
-        // Kill timer
-        yield return new WaitForSeconds(2f);
+        // kill timer
+        yield return new WaitForSeconds(1f);
 
         if (states[type] == ThreatState.Primed)
         {
@@ -139,8 +155,7 @@ public class MonsterManager : MonoBehaviour
         }
     }
 
-   
-    // FLASH 
+    // FLASH (KILLS MONSTER)
     public void Flash()
     {
         var type = currentView;
@@ -155,16 +170,37 @@ public class MonsterManager : MonoBehaviour
             StopRoutine(type);
             states[type] = ThreatState.Idle;
             ClearAll(t);
+
+            // monster death sound
+            if (audioSource != null && monsterDeathSound != null)
+            {
+                audioSource.ignoreListenerPause = true;
+                audioSource.PlayOneShot(monsterDeathSound);
+            }
+
             Debug.Log($"Flash SUCCESS at {type}");
         }
     }
-    
-    // GAME OVER
+
+    // GAME OVER (MONSTER KILLS PLAYER)
     void TriggerGameOver(ThreatType type)
     {
         Debug.Log("GAME OVER — Monster killed player at " + type);
-        Time.timeScale = 0f;
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+        //  player death sound
+        if (audioSource != null && playerDeathSound != null)
+        {
+            audioSource.ignoreListenerPause = true;
+            audioSource.PlayOneShot(playerDeathSound);
+        }
+
+        Time.timeScale = 0f;
+        StartCoroutine(LoadGameOverDelayed());
+    }
+
+    IEnumerator LoadGameOverDelayed()
+    {
+        yield return new WaitForSecondsRealtime(1.2f);
+        SceneManager.LoadScene("GameOver");
     }
 }
