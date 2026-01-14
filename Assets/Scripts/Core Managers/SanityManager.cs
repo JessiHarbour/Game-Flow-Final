@@ -11,17 +11,9 @@ namespace Core_Managers
         [Range(0, 100)]
         public float currentSanity = 100f;
 
-        public float lowSanityThreshold1 = 75f;
-        public float lowSanityThreshold2 = 50f;
-        public float lowSanityThreshold3 = 25f;
-
         [Header("Lantern Drain")]
         public bool lanternOut = false;
         public float lanternOutDrainRate = 5f;
-
-        [Header("Effects")]
-        public bool whispersActive = false;
-        public bool visualDistortionsActive = false;
 
         [Header("Game Over")]
         public string gameOverSceneName = "GameOver";
@@ -49,22 +41,17 @@ namespace Core_Managers
             if (lanternOut)
                 ReduceSanity(lanternOutDrainRate * Time.deltaTime);
 
-           
-            if (currentSanity < lowSanityThreshold1 && !whispersActive)
-                whispersActive = true;
-
-            if (currentSanity < lowSanityThreshold2 && !visualDistortionsActive)
-                visualDistortionsActive = true;
-
+            
             currentSanity = Mathf.Clamp(currentSanity, 0f, 100f);
 
-            // Game over 
+           
             if (currentSanity <= 0f)
             {
                 TriggerGameOver();
             }
         }
 
+        // Reduce sanity 
         public void ReduceSanity(float amount)
         {
             currentSanity -= amount;
@@ -72,6 +59,7 @@ namespace Core_Managers
             Debug.Log("Sanity reduced: " + currentSanity);
         }
 
+        // Increase sanity 
         public void AddSanity(float amount)
         {
             currentSanity += amount;
@@ -79,12 +67,13 @@ namespace Core_Managers
             Debug.Log("Sanity increased: " + currentSanity);
         }
 
+        // Check if player has zero sanity
         public bool IsInsane()
         {
             return currentSanity <= 0f;
         }
 
-        // LANTERN CONTROL
+        
         public void StartLanternOutDrain()
         {
             lanternOut = true;
@@ -95,7 +84,7 @@ namespace Core_Managers
             lanternOut = false;
         }
 
-        // GAME OVER
+        // Trigger game over
         private void TriggerGameOver()
         {
             if (gameOverTriggered)
