@@ -21,6 +21,7 @@ namespace Core_Managers
 
         private void Awake()
         {
+            gameOverTriggered = false;
             if (Instance == null)
                 Instance = this;
             else

@@ -12,13 +12,22 @@ public class Clock : MonoBehaviour
     [SerializeField] private float delay = 1f;
     void Start()
     {
+      
+       
        ass = this.GetComponent<TextMeshProUGUI>();
-            Invoke("clock",delay);
-        
+            ass.text = Hours.ToString() + ":" + Minutes.ToString("00") + " AM";
+       Invoke("clock",delay);
+            Debug.Log("fuck u");
+    }
+
+    public void Cut()
+    {
+        CancelInvoke();
     }
 
     private void clock()
     {
+        Debug.Log("im tesing it im testing it");
         Minutes += 1;
         if (Minutes == 60)
         {
@@ -50,10 +59,6 @@ public class Clock : MonoBehaviour
         {
             SceneManager.LoadScene("Ending");
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 }
