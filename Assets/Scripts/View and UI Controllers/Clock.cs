@@ -12,6 +12,8 @@ public class Clock : MonoBehaviour
     [SerializeField] private float delay = 1f;
     void Start()
     {
+        Hours = 12;
+        Minutes = 0;
       
        
        ass = this.GetComponent<TextMeshProUGUI>();
