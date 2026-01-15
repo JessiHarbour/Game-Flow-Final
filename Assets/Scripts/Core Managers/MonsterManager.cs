@@ -45,26 +45,28 @@ public class MonsterManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
-        else { Destroy(gameObject); return; }
-
-        // Audio setup
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
+        if (Instance != null && Instance != this)
         {
-            Debug.LogError("MonsterManager needs an AudioSource component!");
+            Destroy(gameObject);
+            return;
         }
-        else
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource != null)
         {
             audioSource.playOnAwake = false;
-            audioSource.spatialBlend = 0f; // 2D audio
+            audioSource.spatialBlend = 0f;
         }
 
-        foreach (var t in threats)
-        {
-            states[t.type] = ThreatState.Idle;
-            StartCoroutine(AmbientThreatLoop(t));
-        }
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void Start()
+    {
+        ResetAllThreats();
     }
 
     Threat Get(ThreatType type) => threats.Find(t => t.type == type);
@@ -146,7 +148,7 @@ public class MonsterManager : MonoBehaviour
         SetActive(t.stage2Object, false);
         SetActive(t.attackObject, true);
 
-        // kill timer
+        // 1 second to flash
         yield return new WaitForSeconds(1f);
 
         if (states[type] == ThreatState.Primed)
@@ -171,23 +173,17 @@ public class MonsterManager : MonoBehaviour
             states[type] = ThreatState.Idle;
             ClearAll(t);
 
-            // monster death sound
             if (audioSource != null && monsterDeathSound != null)
             {
                 audioSource.ignoreListenerPause = true;
                 audioSource.PlayOneShot(monsterDeathSound);
             }
-
-            Debug.Log($"Flash SUCCESS at {type}");
         }
     }
 
-    // GAME OVER (MONSTER KILLS PLAYER)
+    // GAME OVER
     void TriggerGameOver(ThreatType type)
     {
-        Debug.Log("GAME OVER — Monster killed player at " + type);
-
-        //  player death sound
         if (audioSource != null && playerDeathSound != null)
         {
             audioSource.ignoreListenerPause = true;
@@ -202,5 +198,35 @@ public class MonsterManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1.2f);
         SceneManager.LoadScene("GameOver");
+    }
+
+    // RESET ON NEW GAME
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "deck")
+        {
+            ResetAllThreats();
+        }
+    }
+
+    private void ResetAllThreats()
+    {
+        StopAllCoroutines();
+        states.Clear();
+        running.Clear();
+
+        foreach (var t in threats)
+        {
+            states[t.type] = ThreatState.Idle;
+            ClearAll(t);
+            StartCoroutine(AmbientThreatLoop(t));
+        }
+
+        currentView = ThreatType.Overboard;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

@@ -21,15 +21,22 @@ namespace Core_Managers
 
         private void Awake()
         {
-            if (Instance == null)
-                Instance = this;
-            else
+            if (Instance != null && Instance != this)
+            {
                 Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            // Listen for scene changes so sanity resets properly
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         private void Start()
         {
-            currentSanity = 100f;
+            ResetSanityState();
         }
 
         private void Update()
@@ -41,10 +48,9 @@ namespace Core_Managers
             if (lanternOut)
                 ReduceSanity(lanternOutDrainRate * Time.deltaTime);
 
-            
             currentSanity = Mathf.Clamp(currentSanity, 0f, 100f);
 
-           
+            // Game over
             if (currentSanity <= 0f)
             {
                 TriggerGameOver();
@@ -73,7 +79,7 @@ namespace Core_Managers
             return currentSanity <= 0f;
         }
 
-        
+        // LANTERN CONTROL
         public void StartLanternOutDrain()
         {
             lanternOut = true;
@@ -92,6 +98,27 @@ namespace Core_Managers
 
             gameOverTriggered = true;
             SceneManager.LoadScene(gameOverSceneName);
+        }
+
+        // Reset sanity when a new game starts
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.name == "deck")
+            {
+                ResetSanityState();
+            }
+        }
+
+        private void ResetSanityState()
+        {
+            currentSanity = 100f;
+            lanternOut = false;
+            gameOverTriggered = false;
+        }
+
+        private void OnDestroy()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
 }

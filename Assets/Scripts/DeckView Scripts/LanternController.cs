@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Core_Managers
 {
@@ -28,12 +29,15 @@ namespace Core_Managers
         private float nextFlickerTime = 0f;
         private float strobeTimer = 0f;
 
+        void Awake()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
         void Start()
         {
             lanternImage = GetComponent<Image>();
-            lanternImage.sprite = lanternOnSprite;
-
-            ScheduleNextFlicker();
+            ResetLanternState();
         }
 
         void Update()
@@ -56,7 +60,8 @@ namespace Core_Managers
                     break;
             }
         }
-        //relight/ stablize
+
+        // relight / stablize
         public void OnLanternClicked()
         {
             if (state == LanternState.Flickering)
@@ -66,6 +71,7 @@ namespace Core_Managers
             else if (state == LanternState.On)
                 FlashLantern();
         }
+
         // lanturn flickering
         public void StartFlicker()
         {
@@ -74,18 +80,18 @@ namespace Core_Managers
             state = LanternState.Flickering;
             flickerTimer = flickerDuration;
             strobeTimer = 0f;
-            
+
             lanternImage.sprite = lanternOnSprite;
             lanternGlow.color = Color.white;
         }
-        
+
         private void RunFlicker()
         {
             strobeTimer += Time.deltaTime;
 
             if (strobeTimer >= strobeSpeed)
             {
-                lanternImage.sprite = 
+                lanternImage.sprite =
                     (lanternImage.sprite == lanternOnSprite) ? lanternOffSprite : lanternOnSprite;
 
                 strobeTimer = 0f;
@@ -119,8 +125,8 @@ namespace Core_Managers
 
             ScheduleNextFlicker();
         }
- 
-        //fail to stablize
+
+        // fail to stablize
         private void ExtinguishLantern()
         {
             state = LanternState.Out;
@@ -132,7 +138,7 @@ namespace Core_Managers
             sanityManager.StartLanternOutDrain();
         }
 
-      // relight
+        // relight
         private void RelightLantern()
         {
             state = LanternState.On;
@@ -143,17 +149,44 @@ namespace Core_Managers
             sanityManager.StopLanternOutDrain();
             ScheduleNextFlicker();
         }
-        
+
         // FLASH? not sure if will be sepearte light
         private void FlashLantern()
         {
             
         }
-        
-        // randomize (schedual next flicker)
+
+        // randomize 
         private void ScheduleNextFlicker()
         {
             nextFlickerTime = Time.time + Random.Range(minFlickerInterval, maxFlickerInterval);
+        }
+
+        // RESET when starting a new game
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.name == "deck")
+            {
+                ResetLanternState();
+            }
+        }
+
+        private void ResetLanternState()
+        {
+            state = LanternState.On;
+            flickerTimer = 0f;
+            strobeTimer = 0f;
+
+            lanternImage.sprite = lanternOnSprite;
+            lanternGlow.color = Color.white;
+
+            sanityManager.StopLanternOutDrain();
+            ScheduleNextFlicker();
+        }
+
+        private void OnDestroy()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
 }

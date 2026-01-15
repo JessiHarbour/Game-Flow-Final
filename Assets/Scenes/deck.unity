@@ -259,13 +259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSanity: 100
-  lowSanityThreshold1: 75
-  lowSanityThreshold2: 50
-  lowSanityThreshold3: 25
   lanternOut: 0
   lanternOutDrainRate: 5
-  whispersActive: 0
-  visualDistortionsActive: 0
   gameOverSceneName: GameOver
 --- !u!114 &71633753
 MonoBehaviour:
