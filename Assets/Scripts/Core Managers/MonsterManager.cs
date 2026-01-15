@@ -229,4 +229,9 @@ public class MonsterManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+    
+    public void Triggerwin()
+    {
+        Time.timeScale = 0f;
+    }
 }

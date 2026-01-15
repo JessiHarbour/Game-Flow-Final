@@ -1580,6 +1580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ff2dc2dba663a459a9c1bed1b3f83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monster: {fileID: 71633753}
   delay: 1
 --- !u!114 &586530676
 MonoBehaviour:

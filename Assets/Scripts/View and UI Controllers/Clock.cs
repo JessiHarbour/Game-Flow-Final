@@ -9,6 +9,7 @@ public class Clock : MonoBehaviour
     private int Minutes = 0;
 
     private TextMeshProUGUI clockText;
+    [SerializeField] public MonsterManager monster;
 
     [SerializeField] private float delay = 1f;
 
@@ -50,6 +51,7 @@ public class Clock : MonoBehaviour
         }
         else
         {
+            monster.Triggerwin();
             SceneManager.LoadScene("Ending");
         }
     }
