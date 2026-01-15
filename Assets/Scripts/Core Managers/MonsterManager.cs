@@ -4,7 +4,7 @@ using UnityEngine;
 using Core_Managers;
 using UnityEngine.SceneManagement;
 
-public enum ThreatType { Overboard, Window, Table }
+public enum ThreatType { Overboard, Window, Table, DeckView, BelowDeckView }
 public enum ThreatState { Idle, Warning1, Warning2, Primed }
 
 public class MonsterManager : MonoBehaviour

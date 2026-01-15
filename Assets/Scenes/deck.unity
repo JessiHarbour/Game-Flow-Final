@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9938313c26de7654f9a65fe0d2485da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentView: 3
   deckView: {fileID: 161021051}
   overboardView: {fileID: 651380106}
   belowDeckView: {fileID: 1256513378}
@@ -658,6 +659,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torchOverlay: {fileID: 1633678939}
   flashTime: 0.15
+  torchButton: {fileID: 204243070}
+  enabledColor: {r: 1, g: 1, b: 1, a: 1}
+  disabledColor: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
 --- !u!114 &204243070
 MonoBehaviour:
   m_ObjectHideFlags: 0
