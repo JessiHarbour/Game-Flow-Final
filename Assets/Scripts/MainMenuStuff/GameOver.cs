@@ -5,6 +5,12 @@ public class GameOver : MonoBehaviour
 {
     public void retry()
     {
-        SceneManager.LoadScene("Scenes/MainMenu");
+        SceneManager.LoadScene("deck");
     }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+    
 }
