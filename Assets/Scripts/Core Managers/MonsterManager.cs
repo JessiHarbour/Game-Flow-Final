@@ -197,6 +197,7 @@ public class MonsterManager : MonoBehaviour
     IEnumerator LoadGameOverDelayed()
     {
         yield return new WaitForSecondsRealtime(1.2f);
+        Triggerwin();
         SceneManager.LoadScene("GameOver");
     }
 

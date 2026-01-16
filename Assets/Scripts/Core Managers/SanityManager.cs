@@ -5,6 +5,7 @@ namespace Core_Managers
 {
     public class SanityManager : MonoBehaviour
     {
+        [SerializeField] public MonsterManager monster;
         public static SanityManager Instance;
 
         [Header("Sanity Settings")]
@@ -95,8 +96,10 @@ namespace Core_Managers
         {
             if (gameOverTriggered)
                 return;
-
+            
+           
             gameOverTriggered = true;
+             monster.Triggerwin();
             SceneManager.LoadScene(gameOverSceneName);
         }
 
